@@ -28,6 +28,7 @@ export default function Home() {
     }
 
     setBefore(sentence);
+    setAfter(data.response);
     setSentence('');
   };
 
