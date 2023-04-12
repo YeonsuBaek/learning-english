@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
+  const [before, setBefore] = useState('');
 
   const handleChangeSentence = (e) => {
     setSentence(e.target.value);
@@ -9,6 +10,8 @@ export default function Home() {
 
   const handleSubmitSentence = (e) => {
     e.preventDefault();
+    setBefore(sentence);
+    setSentence('');
   };
 
   return (
@@ -21,6 +24,12 @@ export default function Home() {
         ></textarea>
         <button type='submit'>작성 완료</button>
       </form>
+
+      {before && (
+        <div>
+          <p>Your Sentence: {before}</p>
+        </div>
+      )}
     </>
   );
 }
