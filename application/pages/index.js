@@ -3,6 +3,7 @@ import { useState } from 'react';
 export default function Home() {
   const [sentence, setSentence] = useState('');
   const [before, setBefore] = useState('');
+  const [after, setAfter] = useState('');
 
   const handleChangeSentence = (e) => {
     setSentence(e.target.value);
@@ -28,6 +29,7 @@ export default function Home() {
       {before && (
         <div>
           <p>Your Sentence: {before}</p>
+          <p>Correct Sentence: {after}</p>
         </div>
       )}
     </>
