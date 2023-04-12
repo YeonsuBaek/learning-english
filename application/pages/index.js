@@ -12,24 +12,29 @@ export default function Home() {
   const handleSubmitSentence = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('./api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ before: before }),
-    });
+    try {
+      const response = await fetch('./api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ before: before }),
+      });
 
-    const data = await response.json();
-    if (response.status !== 200) {
-      throw (
-        data.error || new Error(`request failed with status ${response.status}`)
-      );
+      const data = await response.json();
+      if (response.status !== 200) {
+        throw (
+          data.error ||
+          new Error(`request failed with status ${response.status}`)
+        );
+      }
+
+      setBefore(sentence);
+      setAfter(data.response);
+      setSentence('');
+    } catch (error) {
+      console.error(error);
     }
-
-    setBefore(sentence);
-    setAfter(data.response);
-    setSentence('');
   };
 
   return (
