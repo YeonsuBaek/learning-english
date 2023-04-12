@@ -20,6 +20,13 @@ export default function Home() {
       body: JSON.stringify({ before: before }),
     });
 
+    const data = await response.json();
+    if (response.status !== 200) {
+      throw (
+        data.error || new Error(`request failed with status ${response.status}`)
+      );
+    }
+
     setBefore(sentence);
     setSentence('');
   };
