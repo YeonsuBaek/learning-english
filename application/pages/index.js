@@ -9,8 +9,17 @@ export default function Home() {
     setSentence(e.target.value);
   };
 
-  const handleSubmitSentence = (e) => {
+  const handleSubmitSentence = async (e) => {
     e.preventDefault();
+
+    const response = await fetch('./api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ before: before }),
+    });
+
     setBefore(sentence);
     setSentence('');
   };
