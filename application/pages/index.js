@@ -39,7 +39,6 @@ export default function Home() {
 
       setBefore(sentence);
       setAfter(data.after);
-      setSentence('');
     } catch (error) {
       console.error(error);
     }
