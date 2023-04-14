@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
+import Form from '@/components/layouts/Form';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
@@ -49,14 +50,12 @@ export default function Home() {
       <Header />
       <Title title='Your Sentences' />
       <TextBox>
-        <form onSubmit={handleSubmitSentence}>
-          <textarea
-            placeholder='Write something'
-            value={sentence}
-            onChange={handleChangeSentence}
-            onKeyDown={handleEnterPress}
-          ></textarea>
-        </form>
+        <Form
+          onSubmit={handleSubmitSentence}
+          value={sentence}
+          onChange={handleChangeSentence}
+          onKeyDown={handleEnterPress}
+        />
       </TextBox>
 
       <Title title='Correct Sentences' />
