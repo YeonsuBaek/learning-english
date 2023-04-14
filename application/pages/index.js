@@ -12,9 +12,14 @@ export default function Home() {
     setSentence(e.target.value);
   };
 
-  const handleSubmitSentence = async (e) => {
-    e.preventDefault();
+  const handleEnterPress = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      handleSubmitSentence();
+    }
+  };
 
+  const handleSubmitSentence = async (e) => {
     try {
       const response = await fetch('./api/generate', {
         method: 'POST',
@@ -50,8 +55,8 @@ export default function Home() {
             placeholder='Write something'
             value={sentence}
             onChange={handleChangeSentence}
+            onKeyDown={handleEnterPress}
           ></textarea>
-          <button type='submit'>작성 완료</button>
         </form>
       </TextBox>
 
