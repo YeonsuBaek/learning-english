@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Header from '../components/Header';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
@@ -39,6 +40,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <form onSubmit={handleSubmitSentence}>
         <textarea
           placeholder='Write something'
