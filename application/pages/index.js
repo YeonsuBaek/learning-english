@@ -59,7 +59,7 @@ export default function Home() {
       </TextBox>
 
       <Title title='Correct Sentences' />
-      {before && <TextBox>{after}</TextBox>}
+      <TextBox>{after}</TextBox>
     </>
   );
 }
