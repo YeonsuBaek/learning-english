@@ -18,7 +18,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ before: before }),
+        body: JSON.stringify({ before: sentence }),
       });
 
       const data = await response.json();
@@ -30,7 +30,7 @@ export default function Home() {
       }
 
       setBefore(sentence);
-      setAfter(data.response);
+      setAfter(data.after);
       setSentence('');
     } catch (error) {
       console.error(error);

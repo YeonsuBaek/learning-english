@@ -8,12 +8,17 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const response = await openai.createCompletion({
-  model: 'text-davinci-003',
-  prompt: 'Correct this to standard English:\n\nShe no went to the market.',
-  temperature: 0,
-  max_tokens: 60,
-  top_p: 1.0,
-  frequency_penalty: 0.0,
-  presence_penalty: 0.0,
-});
+export default async function (req, res) {
+  const before = req.body.before || '';
+  const after = await openai.createCompletion({
+    model: 'text-davinci-003',
+    prompt: `Correct ${before} to standard English.`,
+    temperature: 0,
+    max_tokens: 60,
+    top_p: 1.0,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.0,
+  });
+
+  res.status(200).json({ after: after.data.choices[0].text });
+}
