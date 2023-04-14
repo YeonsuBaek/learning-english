@@ -61,12 +61,7 @@ export default function Home() {
       </TextBox>
 
       <Title title='Correct Sentences' />
-      {before && (
-        <div>
-          <p>Your Sentence: {before}</p>
-          <p>Correct Sentence: {after}</p>
-        </div>
-      )}
+      {before && <TextBox>{after}</TextBox>}
     </>
   );
 }
