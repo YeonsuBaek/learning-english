@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from '../components/Header';
+import Title from '../components/layouts/Title';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
@@ -41,6 +42,8 @@ export default function Home() {
   return (
     <>
       <Header />
+      <Title title='Your Sentences' />
+
       <form onSubmit={handleSubmitSentence}>
         <textarea
           placeholder='Write something'
@@ -50,6 +53,7 @@ export default function Home() {
         <button type='submit'>작성 완료</button>
       </form>
 
+      <Title title='Correct Sentences' />
       {before && (
         <div>
           <p>Your Sentence: {before}</p>
