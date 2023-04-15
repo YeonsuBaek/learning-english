@@ -3,16 +3,16 @@ name: Automatically Deployment
 on: [push]
 
 jobs:
-deployment:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Setting .env
-      run: |
-        echo "OPENAI_API_KEY =$OPENAI_API_KEY" >> .env
-      env:
-        OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+      - name: Setting .env
+        run: |
+          echo "OPENAI_API_KEY =$OPENAI_API_KEY" >> .env
+        env:
+          OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
