@@ -6,7 +6,6 @@ import Form from '@/components/layouts/Form';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
-  const [before, setBefore] = useState('');
   const [after, setAfter] = useState('');
 
   const handleChangeSentence = (e) => {
@@ -38,7 +37,6 @@ export default function Home() {
         );
       }
 
-      setBefore(sentence);
       setAfter(data.after);
     } catch (error) {
       console.error(error);
