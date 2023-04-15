@@ -11,6 +11,7 @@ export default function Home() {
   const [sentence, setSentence] = useState('');
   const [after, setAfter] = useState('');
   const [languageError, setLanguageError] = useState('');
+  const [voiceError, setVoiceError] = useState('');
   const includesKorean = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
 
   const handleChangeSentence = (e) => {
@@ -65,7 +66,7 @@ export default function Home() {
       typeof SpeechSynthesisUtterance === 'undefined' ||
       typeof window.speechSynthesis === 'undefined'
     ) {
-      alert('이 브라우저는 음성 합성을 지원하지 않습니다.');
+      setVoiceError('이 브라우저는 음성 합성을 지원하지 않습니다.');
       return;
     }
 
@@ -96,6 +97,7 @@ export default function Home() {
 
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
+      {voiceError && <Error message={voiceError} />}
       <button
         className={styles.voice}
         onClick={() => speakEnglish(after)}
