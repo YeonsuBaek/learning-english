@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../styles/index.module.css';
 import Header from '../components/Header';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
@@ -7,13 +8,21 @@ import Form from '@/components/layouts/Form';
 export default function Home() {
   const [sentence, setSentence] = useState('');
   const [after, setAfter] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const includesKorean = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
 
   const handleChangeSentence = (e) => {
-    setSentence(e.target.value);
+    const userSentence = e.target.value;
+    setSentence(userSentence);
+    setErrorMessage('');
+
+    if (includesKorean(userSentence)) {
+      setErrorMessage('한글은 입력할 수 없습니다.');
+    }
   };
 
   const handleEnterPress = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false) {
+    if (e.keyCode == 13 && e.shiftKey == false && !includesKorean(sentence)) {
       e.preventDefault();
       handleSubmitSentence();
     }
@@ -55,6 +64,7 @@ export default function Home() {
           onKeyDown={handleEnterPress}
         />
       </TextBox>
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
