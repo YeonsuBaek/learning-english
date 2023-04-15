@@ -4,6 +4,7 @@ import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
 import Error from '@/components/layouts/Error';
 import { SpeakerSimpleHigh } from '@phosphor-icons/react';
+import { CopyToClipboard } from 'react-copy-to-clipboard/src';
 
 const CorrectSentences = ({ after }) => {
   const [voiceError, setVoiceError] = useState('');
@@ -42,6 +43,9 @@ const CorrectSentences = ({ after }) => {
       >
         <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
       </button>
+      <CopyToClipboard text={after}>
+        <button>복사</button>
+      </CopyToClipboard>
     </>
   );
 };
