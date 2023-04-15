@@ -8,7 +8,7 @@ export default function Home() {
 
   const handleSubmitSentence = async (sentence) => {
     try {
-      const response = await fetch('./api/generate', {
+      const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
