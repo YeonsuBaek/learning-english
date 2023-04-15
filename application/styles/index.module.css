@@ -2,3 +2,9 @@
   color: #037171;
   font-weight: 700;
 }
+
+.voice {
+  padding: 8px;
+  border: 0;
+  outline: 0;
+}

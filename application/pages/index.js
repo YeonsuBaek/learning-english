@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
 import Form from '@/components/layouts/Form';
+import { SpeakerSimpleHigh } from '@phosphor-icons/react';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
@@ -94,7 +95,13 @@ export default function Home() {
 
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
-      <button onClick={() => speakEnglish(after)}>듣기</button>
+      <button
+        className={styles.voice}
+        onClick={() => speakEnglish(after)}
+        type='button'
+      >
+        <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
+      </button>
     </>
   );
 }
