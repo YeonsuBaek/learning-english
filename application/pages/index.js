@@ -46,7 +46,11 @@ export default function Home() {
         );
       }
 
-      setAfter(data.after);
+      if (data.after.trim() == 'Not Found') {
+        setAfter('올바른 표현을 찾을 수 없습니다.');
+      } else {
+        setAfter(data.after);
+      }
     } catch (error) {
       console.error(error);
     }

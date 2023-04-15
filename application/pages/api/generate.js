@@ -12,7 +12,7 @@ export default async function (req, res) {
   const before = req.body.before || '';
   const after = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: `Correct ${before} to standard English.`,
+    prompt: `Correct ${before} to standard English. If '${before}' is not a standard English, return 'Not Found'`,
     temperature: 0,
     max_tokens: 60,
     top_p: 1.0,
