@@ -3,8 +3,8 @@ import styles from '../styles/correctSentences.module.css';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
 import Error from '@/components/layouts/Error';
-import { SpeakerSimpleHigh } from '@phosphor-icons/react';
-import { CopyToClipboard } from 'react-copy-to-clipboard/src';
+import { SpeakerSimpleHigh, CopySimple } from '@phosphor-icons/react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const CorrectSentences = ({ after }) => {
   const [voiceError, setVoiceError] = useState('');
@@ -36,16 +36,18 @@ const CorrectSentences = ({ after }) => {
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
       {voiceError && <Error message={voiceError} />}
-      <button
-        className={styles.voice}
-        onClick={() => speakEnglish(after)}
-        type='button'
-      >
-        <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
-      </button>
-      <CopyToClipboard text={after}>
-        <button>복사</button>
-      </CopyToClipboard>
+      <div className={styles.buttons}>
+        <button
+          className={styles.voice}
+          onClick={() => speakEnglish(after)}
+          type='button'
+        >
+          <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
+        </button>
+        <CopyToClipboard text={after}>
+          <CopySimple size={28} color='#0f2b46' weight='fill' />
+        </CopyToClipboard>
+      </div>
     </>
   );
 };
