@@ -5,20 +5,21 @@ import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
 import Form from '@/components/layouts/Form';
 import { SpeakerSimpleHigh } from '@phosphor-icons/react';
+import Error from '@/components/layouts/Error';
 
 export default function Home() {
   const [sentence, setSentence] = useState('');
   const [after, setAfter] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [languageError, setLanguageError] = useState('');
   const includesKorean = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
 
   const handleChangeSentence = (e) => {
     const userSentence = e.target.value;
     setSentence(userSentence);
-    setErrorMessage('');
+    setLanguageError('');
 
     if (includesKorean(userSentence)) {
-      setErrorMessage('한글은 입력할 수 없습니다.');
+      setLanguageError('한글은 입력할 수 없습니다.');
     }
   };
 
@@ -91,7 +92,7 @@ export default function Home() {
           onKeyDown={handleEnterPress}
         />
       </TextBox>
-      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+      {languageError && <Error message={languageError} />}
 
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
