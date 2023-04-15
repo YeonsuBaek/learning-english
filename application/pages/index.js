@@ -50,7 +50,7 @@ export default function Home() {
       if (data.after.trim() == 'Not Found') {
         setAfter('올바른 표현을 찾을 수 없습니다.');
       } else {
-        setAfter(data.after);
+        setAfter(data.after.trim());
       }
     } catch (error) {
       console.error(error);
