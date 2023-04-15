@@ -36,18 +36,20 @@ const CorrectSentences = ({ after }) => {
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
       {voiceError && <Error message={voiceError} />}
-      <div className={styles.buttons}>
-        <button
-          className={styles.voice}
-          onClick={() => speakEnglish(after)}
-          type='button'
-        >
-          <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
-        </button>
-        <CopyToClipboard text={after}>
-          <CopySimple size={28} color='#0f2b46' weight='fill' />
-        </CopyToClipboard>
-      </div>
+      {after && (
+        <div className={styles.buttons}>
+          <button
+            className={styles.voice}
+            onClick={() => speakEnglish(after)}
+            type='button'
+          >
+            <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
+          </button>
+          <CopyToClipboard text={after}>
+            <CopySimple size={28} color='#0f2b46' weight='fill' />
+          </CopyToClipboard>
+        </div>
+      )}
     </>
   );
 };
