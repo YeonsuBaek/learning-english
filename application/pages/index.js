@@ -3,35 +3,15 @@ import styles from '../styles/index.module.css';
 import Header from '../components/Header';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
-import Form from '@/components/layouts/Form';
 import { SpeakerSimpleHigh } from '@phosphor-icons/react';
 import Error from '@/components/layouts/Error';
+import YourSentences from '@/components/YourSentences';
 
 export default function Home() {
-  const [sentence, setSentence] = useState('');
   const [after, setAfter] = useState('');
-  const [languageError, setLanguageError] = useState('');
   const [voiceError, setVoiceError] = useState('');
-  const includesKorean = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
 
-  const handleChangeSentence = (e) => {
-    const userSentence = e.target.value;
-    setSentence(userSentence);
-    setLanguageError('');
-
-    if (includesKorean(userSentence)) {
-      setLanguageError('한글은 입력할 수 없습니다.');
-    }
-  };
-
-  const handleEnterPress = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false && !includesKorean(sentence)) {
-      e.preventDefault();
-      handleSubmitSentence();
-    }
-  };
-
-  const handleSubmitSentence = async (e) => {
+  const handleSubmitSentence = async (sentence) => {
     try {
       const response = await fetch('./api/generate', {
         method: 'POST',
@@ -84,17 +64,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Title title='Your Sentences' />
-      <TextBox>
-        <Form
-          onSubmit={handleSubmitSentence}
-          value={sentence}
-          onChange={handleChangeSentence}
-          onKeyDown={handleEnterPress}
-        />
-      </TextBox>
-      {languageError && <Error message={languageError} />}
-
+      <YourSentences onSubmit={handleSubmitSentence} />
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
       {voiceError && <Error message={voiceError} />}
