@@ -53,7 +53,7 @@ Not yet
 
 ## Try it out
 
-Not yet
+[https://learning-english-alpha.vercel.app](https://learning-english-alpha.vercel.app/)
 
 ---
 
@@ -92,3 +92,9 @@ npm run dev
 3. react-copy-to-clipboard
 
 react-copy-to-clipboard 라이브러리를 이용하여 클릭 시 텍스트가 클립보드에 복사되는 기능을 구현하였다.
+
+4. API key를 포함해 Vercel에 배포하기
+
+Vercel에 배포하면서 겪은 500 에러를 해결하였다.
+
+[배포 과정과 문제 해결을 정리한 포스트](https://velog.io/@yeonsubaek/Next.js-API-key%EB%A5%BC-%ED%8F%AC%ED%95%A8%ED%95%B4-Vercel%EC%97%90-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0)
