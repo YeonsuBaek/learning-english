@@ -14,7 +14,7 @@ const Form = ({ onSubmit, value, onChange, onKeyDown }) => {
         onKeyDown={onKeyDown}
       />
       <button className={styles.send} type='submit'>
-        SEND
+        Done!
       </button>
     </form>
   );
