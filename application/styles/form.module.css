@@ -5,3 +5,14 @@
   border: 0;
   outline: 0;
 }
+
+@media screen and (min-width: 900px) {
+  .send {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+  }
+}

@@ -22,9 +22,13 @@ const YourSentences = ({ onSubmit }) => {
 
   const handleEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false && !includesKorean(sentence)) {
-      e.preventDefault();
-      onSubmit(sentence);
+      handleSubmit(e);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(sentence);
   };
 
   return (
@@ -35,6 +39,7 @@ const YourSentences = ({ onSubmit }) => {
           value={sentence}
           onChange={handleChangeSentence}
           onKeyDown={handleEnterPress}
+          onSubmit={handleSubmit}
         />
       </TextBox>
       {languageError && <Error message={languageError} />}
