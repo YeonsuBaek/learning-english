@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 900px) {
+  .wrapper {
+    margin-right: 20px;
+    width: 50%;
+  }
+}

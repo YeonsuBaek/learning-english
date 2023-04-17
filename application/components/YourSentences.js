@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../styles/yourSentences.module.css';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
 import Form from '@/components/layouts/Form';
@@ -27,7 +28,7 @@ const YourSentences = ({ onSubmit }) => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Title title='Your Sentences' />
       <TextBox>
         <Form
@@ -37,7 +38,7 @@ const YourSentences = ({ onSubmit }) => {
         />
       </TextBox>
       {languageError && <Error message={languageError} />}
-    </>
+    </div>
   );
 };
 

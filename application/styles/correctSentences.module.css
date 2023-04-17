@@ -9,3 +9,11 @@
   border: 0;
   outline: 0;
 }
+
+@media screen and (min-width: 900px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+}

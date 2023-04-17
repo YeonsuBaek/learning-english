@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../styles/index.module.css';
 import Header from '../components/Header';
 import YourSentences from '@/components/YourSentences';
 import CorrectSentences from '@/components/CorrectSentences';
@@ -37,8 +38,10 @@ export default function Home() {
   return (
     <>
       <Header />
-      <YourSentences onSubmit={handleSubmitSentence} />
-      <CorrectSentences after={after} />
+      <div className={styles.wrapper}>
+        <YourSentences onSubmit={handleSubmitSentence} />
+        <CorrectSentences after={after} />
+      </div>
     </>
   );
 }

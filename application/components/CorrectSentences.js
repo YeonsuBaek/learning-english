@@ -32,7 +32,7 @@ const CorrectSentences = ({ after }) => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <Title title='Correct Sentences' />
       <TextBox>{after}</TextBox>
       {voiceError && <Error message={voiceError} />}
@@ -50,7 +50,7 @@ const CorrectSentences = ({ after }) => {
           </CopyToClipboard>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
