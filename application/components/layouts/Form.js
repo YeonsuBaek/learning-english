@@ -4,7 +4,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 const Form = ({ onSubmit, value, onChange, onKeyDown }) => {
   return (
-    <form onSubmit={onSubmit}>
+    <form className={styles.wrapper} onSubmit={onSubmit}>
       <TextareaAutosize
         cacheMeasurements
         value={value}
