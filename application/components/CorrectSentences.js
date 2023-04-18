@@ -9,6 +9,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const CorrectSentences = ({ after }) => {
   const [voiceError, setVoiceError] = useState('');
+  const [copyButton, setCopyButton] = useState(false);
+  const [copyMessage, setCopyMessage] = useState('Copy to clipboard');
 
   const speakEnglish = (text) => {
     const speechMsg = new SpeechSynthesisUtterance();
@@ -30,6 +32,20 @@ const CorrectSentences = ({ after }) => {
 
     // SpeechSynthesisUtterance에 저장된 내용을 바탕으로 음성합성 실행
     window.speechSynthesis.speak(speechMsg);
+  };
+
+  const handleEnterCopyButton = () => {
+    setCopyButton(true);
+  };
+
+  const handleLeaveCopyButton = () => {
+    setCopyButton(false);
+    setCopyMessage('Copy to clipboard');
+  };
+
+  const handleClickCopyButton = () => {
+    setCopyMessage('Copied!');
+    speakEnglish(after);
   };
 
   return (
@@ -54,13 +70,15 @@ const CorrectSentences = ({ after }) => {
             <CopyToClipboard text={after}>
               <button
                 className={styles.button}
-                onClick={() => speakEnglish(after)}
+                onClick={handleClickCopyButton}
+                onMouseEnter={handleEnterCopyButton}
+                onMouseLeave={handleLeaveCopyButton}
                 type='button'
               >
                 <CopySimple size={28} weight='fill' className={styles.icon} />
               </button>
             </CopyToClipboard>
-            <Tooltip text={'Copy to clipboard'} />
+            {copyButton && <Tooltip text={copyMessage} />}
           </div>
         </div>
       )}
