@@ -4,10 +4,11 @@
   justify-content: space-between;
 }
 
-.voice {
-  padding: 8px;
+.button {
+  margin: 8px;
   border: 0;
   outline: 0;
+  background-color: transparent;
 }
 
 @media screen and (min-width: 900px) {
@@ -16,4 +17,18 @@
     flex-direction: column;
     width: 50%;
   }
+}
+
+.icon {
+  fill: #006494;
+  transition: fill 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.icon:is(:hover, :active) {
+  fill: #0f2b46;
+}
+
+.copy {
+  position: relative;
 }

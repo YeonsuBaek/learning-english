@@ -3,6 +3,7 @@ import styles from '../styles/correctSentences.module.css';
 import Title from '../components/layouts/Title';
 import TextBox from '@/components/layouts/TextBox';
 import Error from '@/components/layouts/Error';
+import Tooltip from '../components/layouts/Tooltip';
 import { SpeakerSimpleHigh, CopySimple } from '@phosphor-icons/react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -39,15 +40,28 @@ const CorrectSentences = ({ after }) => {
       {after && (
         <div className={styles.buttons}>
           <button
-            className={styles.voice}
+            className={styles.button}
             onClick={() => speakEnglish(after)}
             type='button'
           >
-            <SpeakerSimpleHigh size={28} color='#0f2b46' weight='fill' />
+            <SpeakerSimpleHigh
+              size={28}
+              weight='fill'
+              className={styles.icon}
+            />
           </button>
-          <CopyToClipboard text={after}>
-            <CopySimple size={28} color='#0f2b46' weight='fill' />
-          </CopyToClipboard>
+          <div className={styles.copy}>
+            <CopyToClipboard text={after}>
+              <button
+                className={styles.button}
+                onClick={() => speakEnglish(after)}
+                type='button'
+              >
+                <CopySimple size={28} weight='fill' className={styles.icon} />
+              </button>
+            </CopyToClipboard>
+            <Tooltip text={'Copy to clipboard'} />
+          </div>
         </div>
       )}
     </div>
