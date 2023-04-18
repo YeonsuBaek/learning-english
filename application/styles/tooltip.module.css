@@ -1,13 +1,13 @@
 .tooltip {
   position: absolute;
   top: 100%;
-  left: 90%;
+  left: 50%;
   padding: 6px 13px;
   font-size: 13px;
   color: #fff;
   background-color: #292c32;
   border-radius: 3px;
-  transform: translateX(-90%);
+  transform: translateX(-50%);
   white-space: nowrap;
 }
 
@@ -15,8 +15,8 @@
 .tooltip::after {
   position: absolute;
   top: -20px;
-  left: 75%;
-  transform: translateX(-75%);
+  left: 50%;
+  transform: translateX(-50%);
   display: block;
   width: 0;
   height: 0;
